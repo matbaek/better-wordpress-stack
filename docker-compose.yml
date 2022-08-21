@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   wordpress:
-    image: wordpress:${WORDPRESS_VERSION}-php${PHP_VERSION}
+    image: wordpress:${WORDPRESS_IMAGE}
     restart: always
     ports:
       - "${WP_HTTP_PORT}:80"
