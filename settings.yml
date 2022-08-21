@@ -2,76 +2,38 @@
 user:
   wordpress_version:
     label:
-      Wordpress/PHP version
+      Wordpress version
     hint:
-      Select a combination of Wordpress and PHP from the list above.
+      Select a Wordpress version from the list above.
+      Wordpress & PHP compatibility; https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/
     type:
       select
     values:
-      - "6.0-php8.1" # WP: 6.0, PHP: 8.1
-      - "6.0-php8.0" # WP: 6.0, PHP: 8.0
-      - "6.0-php7.4" # WP: 6.0, PHP: 7.4
-      - "5.9-php8.1" # WP: 5.9, PHP: 8.1
-      - "5.9-php8.0" # WP: 5.9, PHP: 8.0
-      - "5.9-php7.4" # WP: 5.9, PHP: 7.4
-      - "5.8-php8.0" # WP: 5.8, PHP: 8.0
-      - "5.8-php7.4" # WP: 5.8, PHP: 7.4
-      - "5.7-php8.0" # WP: 5.7, PHP: 8.0
-      - "5.7-php7.4" # WP: 5.7, PHP: 7.4
-      - "5.6-php8.0" # WP: 5.6, PHP: 8.0
-      - "5.6-php7.4" # WP: 5.6, PHP: 7.4
+      - "6.0" # PHP >= 8.1
+      - "5.9" # PHP >= 8.1
+      - "5.8" # PHP >= 8.0
+      - "5.7" # PHP >= 8.0
+      - "5.6" # PHP >= 8.0
+      - "5.5" # PHP >= 7.4
+      - "5.4" # PHP >= 7.4
+      - "5.3" # PHP >= 7.4
     target:
-      WORDPRESS_IMAGE
+      WORDPRESS_VERSION
 
-#  wordpress_version:
-#    label:
-#      Wordpress version
-#    hint:
-#      Select a Wordpress version from the list above.
-#      Check for PHP & Wordpress compatibility here; https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/
-#    type:
-#      select
-#    values:
-#      - "6.0" # PHP >= 8.1
-#      - "5.9" # PHP >= 8.1
-#      - "5.8" # PHP >= 8.0
-#      - "5.7" # PHP >= 8.0
-#      - "5.6" # PHP >= 8.0
-##      - "5.5" # PHP >= 7.4
-##      - "5.4" # PHP >= 7.4
-##      - "5.3" # PHP >= 7.4
-#    target:
-#      WORDPRESS_VERSION
-#
-#  php_version:
-#    label:
-#      PHP version
-#    hint:
-#      Select a PHP version from the list above.
-#      Check for PHP & Wordpress compatibility here; https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/
-#    type:
-#      select
-#    values:
-#      - "8.1"
-#      - "8.0"
-##      - "7.4"
-#    target:
-#      PHP_VERSION
-      
-  MariaDB_version:
+  php_version:
     label:
-      MariaDB version
+      PHP version
     hint:
-      Select a MariaDB version from the list above
+      Select a PHP version from the list above.
+      Wordpress & PHP compatibility; https://make.wordpress.org/core/handbook/references/php-compatibility-and-wordpress-versions/
     type:
       select
     values:
-      - latest
-      - 10.7
-      - 10.6
-      - 10.5
+      - "8.1"
+      - "8.0"
+      - "7.4"
     target:
-      MARIADB_VERSION
+      PHP_VERSION
       
   wp_debug:
     label:
@@ -83,25 +45,15 @@ user:
     target:
       WORDPRESS_DEBUG
 
-  wp_debug_log:
+  wp_config_extra:
     label:
-      Enable WordPress debug log?
+      Add extra define to 'wp-config.php'?
     type:
-      checkbox
+      input
     hint:
-      Check to enable WordPress debug log
+      An example: define('WP_DEBUG_LOG', true);
     target:
-      WORDPRESS_DEBUG_LOG
-
-  wp_debug_display:
-    label:
-      Enable WordPress debug display?
-    type:
-      checkbox
-    hint:
-      Check to enable WordPress debug display
-    target:
-      WORDPRESS_DEBUG_DISPLAY
+      WORDPRESS_CONFIG_EXTRA
 
 
 #System defaults
