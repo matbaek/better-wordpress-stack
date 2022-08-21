@@ -1,0 +1,102 @@
+#User defined
+user:
+  wordpress_version:
+    label:
+      Wordpress version
+    hint:
+      Select a Wordpress version from the list above
+    type:
+      select
+    values:
+      - "6.0"
+      - "5.9"
+      - "5.8"
+    target:
+      WORDPRESS_VERSION
+
+  php_version:
+    label:
+      PHP version
+    hint:
+      Select a PHP version from the list above
+    type:
+      select
+    values:
+      - "8.1"
+      - "8.0"
+      - "7.4"
+    target:
+      PHP_VERSION
+      
+  MariaDB_version:
+    label:
+      MariaDB version
+    hint:
+      Select a MariaDB version from the list above
+    type:
+      select
+    values:
+      - latest
+      - 10.7
+      - 10.6
+      - 10.5
+    target:
+      MARIADB_VERSION
+      
+  wp_debug:
+    label:
+      Enable WordPress debug mode?
+    type:
+      checkbox
+    hint:
+      Check to enable WordPress debug mode
+    target:
+      WORDPRESS_DEBUG
+  wp_debug_log:
+    label:
+      Enable WordPress debug log?
+    type:
+      checkbox
+    hint:
+      Check to enable WordPress debug log
+    target:
+      WORDPRESS_DEBUG_LOG
+  wp_debug_display:
+    label:
+      Enable WordPress debug display?
+    type:
+      checkbox
+    hint:
+      Check to enable WordPress debug display
+    target:
+      WORDPRESS_DEBUG_DISPLAY
+
+
+  # mysql_version:
+  #   label:
+  #     MySQL version
+  #   hint:
+  #     Select MySQL version
+  #   type:
+  #     select
+  #   values:
+  #     - "5.0"
+  #     - "7.0"
+  #   target:
+  #     MYSQL_VERSION
+
+#System defaults
+system:
+  show_localpath_selector:
+    true
+  #For collecting and storing DB in .env
+  #db/user/password
+  db_credentials:
+    true
+  #Generate public ports for the docker image
+  ports:
+    http:
+      WP_HTTP_PORT
+    others:
+      - MYSQL_PORT
+      - PMA_PORT
