@@ -1,6 +1,6 @@
 #User defined
 user:
-  wordpress_version:
+  wordpress:
     label:
       Wordpress version
     hint:
@@ -9,18 +9,15 @@ user:
     type:
       select
     values:
-      - "6.0" # PHP >= 8.1
-      - "5.9" # PHP >= 8.1
-      - "5.8" # PHP >= 8.0
-      - "5.7" # PHP >= 8.0
-      - "5.6" # PHP >= 8.0
-      - "5.5" # PHP >= 7.4
-      - "5.4" # PHP >= 7.4
-      - "5.3" # PHP >= 7.4
+      - "6.0"
+      - "5.9"
+      - "5.8"
+      - "5.7"
+      - "5.6"
     target:
       WORDPRESS_VERSION
 
-  php_version:
+  fake_name:
     label:
       PHP version
     hint:
@@ -34,37 +31,58 @@ user:
       - "7.4"
     target:
       PHP_VERSION
-      
+
+  MariaDB_version:
+    label:
+      MariaDB version
+    hint:
+      Select a MariaDB version from the list above
+    type:
+      select
+    values:
+      - latest
+      - 10.7
+      - 10.6
+      - 10.5
+    target:
+      MARIADB_VERSION
+
   wp_debug:
     label:
-      Enable WordPress debug mode?
+      Enable WordPress debug and log mode?
     type:
       checkbox
     hint:
       Check to enable WordPress debug mode
     target:
-      WORDPRESS_DEBUG
+      WORDPRESS_DEBUG_LOG
 
-  wp_config_extra:
+  xdebug:
     label:
-      Add extra define to 'wp-config.php'?
+      Enable XDebug 3 mode?
     type:
-      input
+      checkbox
     hint:
-      An example: define('WP_DEBUG_LOG', true);
+      Check to enable XDebug 3 mode
     target:
-      WORDPRESS_CONFIG_EXTRA
+      XDEBUG
 
+#  wp_config_extra:
+#    label:
+#      Add extra define to 'wp-config.php'?
+#    hint:
+#      An example - define('WP_DEBUG_DISPLAY', false);
+#    type:
+#      input
+#    target:
+#      WORDPRESS_CONFIG_EXTRA
 
 #System defaults
 system:
   show_localpath_selector:
     true
-  #For collecting and storing DB in .env
-  #db/user/password
   db_credentials:
     true
-  #Generate public ports for the docker image
   ports:
     http:
       WP_HTTP_PORT
